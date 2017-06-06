@@ -1,3 +1,67 @@
-<h1>
-  {{title}}
-</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!--
+        1) Project name (should not be empty)
+        2) Mail (should not be empty and a valid email)
+        3) Project Status Dropdown: 'Stable', 'Critical' and 'Finished'
+        4) Submit Button
+
+        - Add a validator which does not allow "Test" as a project name.
+        - Implement it as an async validator.
+        - Uppon submit the form, print value in console.
+      -->
+      <form [formGroup] = "projectForm" (ngSubmit)="onSaveProject()">
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="projectName"
+            formControlName="projectName"
+            >
+            <span
+              *ngIf="!projectForm.get('projectName').valid && projectForm.get('projectName').touched && !projectForm.get('projectName').pending"
+              class="help-block"
+              >
+            <span
+                *ngIf="projectForm.get('projectName').getError('invalidProjectName')"
+                >This is a not a Project Name valid !
+              </span>
+              <span
+                *ngIf="projectForm.get('projectName').getError('required')"
+                >This field is required!
+              </span>
+
+            </span>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email">
+            <span
+              *ngIf="!projectForm.get('email').valid && projectForm.get('email').touched && !projectForm.get('email').pending"
+              class="help-block"
+              > Write a valid Email</span>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Project Status</label>
+          <select
+            id="status"
+            class="form-control"
+            formControlName="projectStatus">
+            <option
+             *ngFor="let option of options"
+             [value]="option">{{option}}</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!projectForm.valid || projectForm.pending">Create a Project</button>
+      </form>
+
+    </div>
+  </div>
+</div>

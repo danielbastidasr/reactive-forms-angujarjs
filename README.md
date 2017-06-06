@@ -1,6 +1,19 @@
 # ReactiveFormsExample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.5.
+In this project we will create a basic Reactive Form with the following Controls and Sync and Async Custom Validators.
+
+## Controls and Validators
+
+1) Project name (should not be empty)
+2) Mail (should not be empty and a valid email)
+3) Project Status Dropdown: 'Stable', 'Critical' and 'Finished'
+4) Submit Button
+
+- Add an Async validator which does not allow "Test" as a project name.
+- Add a Sync Validator which does not allow "TestProject" as a project name.
+- Implement it as an async validator.
+- Uppon submit the form, print value in console.
+
 
 ## Development server
 
