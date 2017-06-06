@@ -36,8 +36,12 @@ export class AppComponent implements OnInit{
 
   onSaveProject(){
     if(this.projectForm.status === 'VALID'){
+      
       console.log(this.projectForm.value);
-      this.projectForm.reset();
+
+      this.projectForm.reset({
+        'projectStatus' : "Critical"
+      });
     }
   }
 
